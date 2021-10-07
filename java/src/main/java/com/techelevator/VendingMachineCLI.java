@@ -4,6 +4,7 @@ import com.techelevator.view.Menu;
 
 public class VendingMachineCLI {
 
+	//used to create constant strings
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE };
@@ -20,8 +21,12 @@ public class VendingMachineCLI {
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// display vending machine items
+				//read from vending machine.csv
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				// do purchase
+				// display list of (1) Feed Money
+				//(2) Select Product
+				//(3) Finish Transaction
+				//
 			}
 		}
 	}
