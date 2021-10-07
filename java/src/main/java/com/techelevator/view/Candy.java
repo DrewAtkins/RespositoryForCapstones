@@ -2,7 +2,7 @@ package com.techelevator.view;
 
 import java.math.BigDecimal;
 
-public class Candy extends Product{
+public class Candy extends Product implements Vendable{
 
     private String response = "Munch Munch, Yum!";
 

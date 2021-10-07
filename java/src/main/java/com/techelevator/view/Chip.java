@@ -2,7 +2,7 @@ package com.techelevator.view;
 
 import java.math.BigDecimal;
 
-public class Chip extends Product{
+public class Chip extends Product implements Vendable{
 //    private String slotNumber;
 //    private String itemName;
 //    private BigDecimal cost;
@@ -18,6 +18,7 @@ public class Chip extends Product{
         return response;
 
     }
+
 
 }
 

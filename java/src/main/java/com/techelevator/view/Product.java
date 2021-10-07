@@ -13,6 +13,24 @@ public abstract class Product {
     }
 
     public abstract String getResponse();
+
+    public String getSlotNumber() {
+        return slotNumber;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public int getInventoryCount() {
+        return inventoryCount;
+    }
 }
+
+
 
 
