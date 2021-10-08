@@ -61,23 +61,27 @@ public class VendingMachineCLI {
 		}
 	}
 
-	/*public void callCorrectClass() {
+	public void callCorrectClass() {
 		for (String item : vendingMachineItems) {
 			String splitItemTest = item.split("| ");
 			if (splitItemTest[3].equals("Chip")) {
-				System.out.println(splitItemTest);
-				testItemThing.add(splitItemTest)
+//				System.out.println(splitItemTest);
+//				testItemThing.add(splitItemTest);
+				 return Chip(item);
 			}
 
 
 		}
 	}
 
-	Trying to split the csv file by the pipe, and print out that list to see if it displays the way we want it to,
-	also String[]? List<Array> pls help
+//	Trying to split the csv file by the pipe, and print out that list to see if it displays the way we want it to,
+//	also String[]? List<Array> pls help
+
+	//can yall hear me?
 
 
-	 */
+
+
 	public static void main (String[]args) throws FileNotFoundException {
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
