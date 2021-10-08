@@ -11,12 +11,13 @@ public class VendingMachine {
 
     private static List<Product> vendingMachineItems = new ArrayList<Product>();
 
-    private void loadingMachineItems() throws FileNotFoundException {
+    public void loadingMachineItems() throws FileNotFoundException {
         File vendItems = new File("vendingmachine.csv");
         try (Scanner readingVendItems = new Scanner(vendItems)) {
             while (readingVendItems.hasNextLine()) {
                 String line = readingVendItems.nextLine();
                  vendingMachineItems.add(buildProduct(line));
+                //System.out.println(vendingMachineItems);
             }
 
         }
@@ -24,6 +25,8 @@ public class VendingMachine {
 
     public Product buildProduct(String line) throws IllegalArgumentException {
         String[] parts = line.split("|");
+
+
         if (parts[3].equals("Chip")) {
 
             BigDecimal costDecimal = new BigDecimal(parts[2]);

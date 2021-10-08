@@ -16,18 +16,18 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
+	//private static final String MAIN_MENU_OPTION_EXIT = "Exit";
 	private static final String[] MAIN_MENU_OPTIONS = {MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT};
 	private static final String[] PURCHASE_MENU = {"Feed Money", "Select Product", "Exit"};
-	private static final String[] TEST_MENU = {"Test"};
-	private static String[] testItemThing // trying to test this to see if it's splitting correctly
 
 
-
+	private VendingMachine vendingMachine;
 	private Menu menu;
 
 
-	public VendingMachineCLI(Menu menu) {
+	public VendingMachineCLI(Menu menu, VendingMachine vendingMachine) {
 		this.menu = menu;
+		this.vendingMachine = vendingMachine;
 	}
 
 	public void run() throws FileNotFoundException {
@@ -37,11 +37,12 @@ public class VendingMachineCLI {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-
+				//vendingMachine.buildProduct();
+				vendingMachine.loadingMachineItems();
 				//read from vending machine.csv
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				menu.getChoiceFromOptions(PURCHASE_MENU);
-				menu.getChoiceFromOptions(TEST_MENU);
+
 				//(3) Finish Transaction
 				//
 
@@ -55,7 +56,8 @@ public class VendingMachineCLI {
 
 	public static void main (String[]args) throws FileNotFoundException {
 		Menu menu = new Menu(System.in, System.out);
-		VendingMachineCLI cli = new VendingMachineCLI(menu);
+		VendingMachine vendingMachine = new VendingMachine();
+		VendingMachineCLI cli = new VendingMachineCLI(menu, vendingMachine);
 		cli.run();
 	}
 }
