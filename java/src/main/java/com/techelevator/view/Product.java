@@ -10,6 +10,10 @@ public abstract class Product {
     private int inventoryCount;
 
     public Product(String slotNumber, String itemName, BigDecimal cost, int inventoryCount) {
+        this.slotNumber = slotNumber;
+        this.itemName = itemName;
+        this.cost = cost;
+        this.inventoryCount = inventoryCount;
     }
 
     public abstract String getResponse();

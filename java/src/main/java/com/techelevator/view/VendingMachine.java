@@ -9,9 +9,14 @@ import java.util.Scanner;
 
 public class VendingMachine {
 
-    private static List<Product> vendingMachineItems = new ArrayList<Product>();
+    private List<Product> vendingMachineItems = new ArrayList<Product>();
 
-    public void loadingMachineItems() throws FileNotFoundException {
+    public VendingMachine() {
+        loadingMachineItems();
+    }
+
+
+    private void loadingMachineItems() {
         File vendItems = new File("vendingmachine.csv");
         try (Scanner readingVendItems = new Scanner(vendItems)) {
             while (readingVendItems.hasNextLine()) {
@@ -20,11 +25,17 @@ public class VendingMachine {
                 //System.out.println(vendingMachineItems);
             }
 
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
         }
     }
 
+    public List<Product> getVendingMachineItems() {
+        return vendingMachineItems;
+    }
+
     public Product buildProduct(String line) throws IllegalArgumentException {
-        String[] parts = line.split("|");
+        String[] parts = line.split("\\|");
 
 
         if (parts[3].equals("Chip")) {
