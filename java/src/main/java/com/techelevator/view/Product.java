@@ -13,7 +13,13 @@ public abstract class Product {
         this.slotNumber = slotNumber;
         this.itemName = itemName;
         this.cost = cost;
-        this.inventoryCount = inventoryCount;
+        this.inventoryCount = 5;
+    }
+
+    public int decrementInv() {
+        inventoryCount -= 1;
+        return inventoryCount;
+
     }
 
     public abstract String getResponse();

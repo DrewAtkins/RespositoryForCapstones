@@ -33,6 +33,7 @@ public class VendingMachineCLI {
     private static final String[] FEED_MONEY_MENU = {FEED_MONEY_OPTION_1, FEED_MONEY_OPTION_2, FEED_MONEY_OPTION_3, FEED_MONEY_OPTION_4};
 
 
+
     private VendingMachine vendingMachine;
     private Menu menu;
 
@@ -46,8 +47,9 @@ public class VendingMachineCLI {
         List<Product> products = vendingMachine.getVendingMachineItems();
         for (Product item : products) {
             System.out.println(item.getSlotNumber() + "|" + item.getItemName() +
-                    "|" + item.getCost() + "|" + item.getInventoryCount());
+                    "|" + item.getCost());
         }
+
     }
 
     public void paymentWorkFlowFeedMoney() {
@@ -69,6 +71,9 @@ public class VendingMachineCLI {
             String purchaseMenuChoice = (String) menu.getChoiceFromOptions(PURCHASE_MENU);
             if (purchaseMenuChoice.equals(PURCHASE_MENU_FEED_MONEY)) {
                 paymentWorkFlowFeedMoney();
+            } else if (purchaseMenuChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
+                vendingMachine.purchaseProduct();
+
             }
         }
     }
@@ -82,6 +87,7 @@ public class VendingMachineCLI {
                 displayPage();
             } else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
                 doPaymentWorkFlow();
+
             } else {
                 System.exit(0);
             }

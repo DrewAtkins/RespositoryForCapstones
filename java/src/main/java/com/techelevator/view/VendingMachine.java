@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,7 +26,7 @@ public class VendingMachine {
         loadingMachineItems();
     }
 
-//load machine and get info from csv
+    //load machine and get info from csv
     private void loadingMachineItems() {
         File vendItems = new File("vendingmachine.csv");
         try (Scanner readingVendItems = new Scanner(vendItems)) {
@@ -74,7 +73,7 @@ public class VendingMachine {
 
     }
 
-//handle money
+    //handle money
     public BigDecimal feedMoney(BigDecimal moneyAdded) {
         if (moneyAdded.equals(TWENTY)) {
             balance = balance.add(moneyAdded);
@@ -89,6 +88,7 @@ public class VendingMachine {
     }
 
     public BigDecimal getBalance() {
+        System.out.println(balance);
         return balance;
     }
 
@@ -96,27 +96,51 @@ public class VendingMachine {
         return change;
     }
 
+    public BigDecimal subtractBalance(BigDecimal itemCost) {
+        balance = balance.subtract(itemCost);
+        return balance;
+    }
+
+    public void getSelection() {
+    }
+
 
 //handle product selection
 
-    public String purchaseProduct(String selectedItem) {
-
+    public String purchaseProduct() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please select item by inputting slot location (ex. A1): ");
-        String selectedSlotLocation = scanner.nextLine();
-
-        String slotLocation = selectedSlotLocation;
         List<Product> products = getVendingMachineItems();
+
+        //displayList
         for (Product item : products) {
-            if ((item.getSlotNumber().equals(slotLocation)) && (item.getInventoryCount() > 0)) {
-                System.out.println(item.getItemName() + "exists");
-            } else if (item.getSlotNumber().equals(slotLocation)) {
-                System.out.println("Item is out of stock");
-            } else {
-                System.out.println("Were sorry! The item you entered does not exist");
+            System.out.println(item.getSlotNumber() + "|" + item.getItemName() +
+                    "|" + item.getCost() + "|" + item.getInventoryCount());
+        }
+        System.out.println("Please select item by inputting slot location (ex. A1): ");
+        String slotLocation = scanner.nextLine();
+
+        Product foundProduct = null;
+        for (Product product : products) {
+            if (product.getSlotNumber().equals(slotLocation)) {
+                foundProduct = product;
             }
+
+        }
+        if (foundProduct == null) {
+            System.out.println("Invalid Selection!");
+            return "Invalid Selection!";
         }
 
+
+        if (foundProduct.getInventoryCount() > 0) {
+            subtractBalance(foundProduct.getCost());
+            foundProduct.decrementInv();
+            System.out.println(foundProduct.getItemName() + "|" + foundProduct.getCost() + "|" + getBalance() + "|" + foundProduct.getResponse());
+        } else {
+            System.out.println("Item is out of stock");
+        }
+
+        return "Successful purchase";
     }
 
 // add to cart, subtract from inventory count, subtract from balance
