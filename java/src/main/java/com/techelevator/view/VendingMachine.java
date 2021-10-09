@@ -10,6 +10,17 @@ import java.util.Scanner;
 public class VendingMachine {
 
     private List<Product> vendingMachineItems = new ArrayList<Product>();
+    BigDecimal balance = new BigDecimal(0);
+    BigDecimal change = new BigDecimal(0);
+    //coins
+    final BigDecimal NICKELS = new BigDecimal(.05);
+    final BigDecimal DIMES = new BigDecimal(.10);
+    final BigDecimal QUARTERS = new BigDecimal(.25);
+    //bills
+    final BigDecimal DOLLAR = new BigDecimal(1.00);
+    final BigDecimal FIVE = new BigDecimal(5.00);
+   final BigDecimal TEN = new BigDecimal(10.00);
+   final BigDecimal TWENTY = new BigDecimal(20.00);
 
     public VendingMachine() {
         loadingMachineItems();
@@ -21,7 +32,7 @@ public class VendingMachine {
         try (Scanner readingVendItems = new Scanner(vendItems)) {
             while (readingVendItems.hasNextLine()) {
                 String line = readingVendItems.nextLine();
-                 vendingMachineItems.add(buildProduct(line));
+                vendingMachineItems.add(buildProduct(line));
                 //System.out.println(vendingMachineItems);
             }
 
@@ -62,4 +73,27 @@ public class VendingMachine {
 
     }
 
-}
+
+
+    public BigDecimal feedMoney(BigDecimal moneyAdded) {
+        if (moneyAdded == TWENTY) {
+            balance.add(TWENTY);
+        } else if (moneyAdded == TEN) {
+            balance.add(TEN);
+        } else if (moneyAdded == FIVE) {
+            balance.add(FIVE);
+        } else if (moneyAdded == DOLLAR) {
+            balance.add(DOLLAR);
+        } return balance;
+    }
+
+        public BigDecimal getBalance() {
+            return balance;
+        }
+
+        public BigDecimal returnChange() {
+            return change;
+        }
+
+    }
+

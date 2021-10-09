@@ -7,6 +7,7 @@ import com.techelevator.view.VendingMachine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -25,6 +26,13 @@ public class VendingMachineCLI {
 	private static final String PURCHASE_MENU_FINISH_TRANSACTION = "Finish Transaction";
 
 	private static final String[] PURCHASE_MENU = {PURCHASE_MENU_FEED_MONEY,PURCHASE_MENU_SELECT_PRODUCT, PURCHASE_MENU_FINISH_TRANSACTION};
+	private static final String FEED_MONEY_OPTION_1 = "Add 1 Dollar to your Balance.";
+	private static final String FEED_MONEY_OPTION_2 = "Add 5 Dollars to your Balance.";
+	private static final String FEED_MONEY_OPTION_3 = "Add 10 Dollars to your Balance.";
+	private static final String FEED_MONEY_OPTION_4 = "Add 20 Dollars to your Balance.";
+	private static final String[] FEED_MONEY_MENU = {FEED_MONEY_OPTION_1, FEED_MONEY_OPTION_2,FEED_MONEY_OPTION_3, FEED_MONEY_OPTION_4};
+
+
 
 	private VendingMachine vendingMachine;
 	private Menu menu;
@@ -42,26 +50,33 @@ public class VendingMachineCLI {
 					"|" + item.getCost()  + "|" + item.getInventoryCount());
 		}
 
+
 	}
 	public void run() throws FileNotFoundException {
-		//vendingMachine.loadingMachineItems();
-
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-
 				displayPage();
-				//read from vending machine.csv
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				menu.getChoiceFromOptions(PURCHASE_MENU);
+				while (true) {
+					String purchaseMenuChoice = (String) menu.getChoiceFromOptions(PURCHASE_MENU);
+					if (purchaseMenuChoice.equals(PURCHASE_MENU_FEED_MONEY)) {
+						String feedMoneyMenuChoice = (String) menu.getChoiceFromOptions(FEED_MONEY_MENU);
+						if(feedMoneyMenuChoice.equals(FEED_MONEY_OPTION_1)) {
+						vendingMachine.feedMoney();
+						}
 
-				//(3) Finish Transaction
-				//
+					}
+					//(3) Finish Transaction
 
-			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
-				System.exit(0);
+
+					else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
+						System.exit(0);
+					}
+				}
 			}
+
 		}
 	}
 
