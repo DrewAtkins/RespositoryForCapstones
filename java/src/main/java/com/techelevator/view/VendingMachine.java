@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,16 +18,16 @@ public class VendingMachine {
     final BigDecimal DIMES = new BigDecimal(.10);
     final BigDecimal QUARTERS = new BigDecimal(.25);
     //bills
-    final BigDecimal DOLLAR = new BigDecimal(1.00);
-    final BigDecimal FIVE = new BigDecimal(5.00);
-   final BigDecimal TEN = new BigDecimal(10.00);
-   final BigDecimal TWENTY = new BigDecimal(20.00);
+    public final BigDecimal DOLLAR = new BigDecimal(1.00);
+    public final BigDecimal FIVE = new BigDecimal(5.00);
+    public final BigDecimal TEN = new BigDecimal(10.00);
+    public final BigDecimal TWENTY = new BigDecimal(20.00);
 
     public VendingMachine() {
         loadingMachineItems();
     }
 
-
+//load machine and get info from csv
     private void loadingMachineItems() {
         File vendItems = new File("vendingmachine.csv");
         try (Scanner readingVendItems = new Scanner(vendItems)) {
@@ -68,32 +69,56 @@ public class VendingMachine {
             Candy newCandy = new Candy(parts[0], parts[1], costDecimal, 5);
             return newCandy;
         } else {
-            throw new IllegalArgumentException("Item doesn't fit into classes");
+            throw new IllegalArgumentException("Item not found");
         }
 
     }
 
-
-
+//handle money
     public BigDecimal feedMoney(BigDecimal moneyAdded) {
-        if (moneyAdded == TWENTY) {
-            balance.add(TWENTY);
-        } else if (moneyAdded == TEN) {
-            balance.add(TEN);
-        } else if (moneyAdded == FIVE) {
-            balance.add(FIVE);
-        } else if (moneyAdded == DOLLAR) {
-            balance.add(DOLLAR);
-        } return balance;
+        if (moneyAdded.equals(TWENTY)) {
+            balance = balance.add(moneyAdded);
+        } else if (moneyAdded.equals(TEN)) {
+            balance = balance.add(moneyAdded);
+        } else if (moneyAdded.equals(FIVE)) {
+            balance = balance.add(moneyAdded);
+        } else if (moneyAdded.equals(DOLLAR)) {
+            balance = balance.add(moneyAdded);
+        }
+        return balance;
     }
 
-        public BigDecimal getBalance() {
-            return balance;
-        }
+    public BigDecimal getBalance() {
+        return balance;
+    }
 
-        public BigDecimal returnChange() {
-            return change;
+    public BigDecimal returnChange() {
+        return change;
+    }
+
+
+//handle product selection
+
+    public String purchaseProduct(String selectedItem) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please select item by inputting slot location (ex. A1): ");
+        String selectedSlotLocation = scanner.nextLine();
+
+        String slotLocation = selectedSlotLocation;
+        List<Product> products = getVendingMachineItems();
+        for (Product item : products) {
+            if ((item.getSlotNumber().equals(slotLocation)) && (item.getInventoryCount() > 0)) {
+                System.out.println(item.getItemName() + "exists");
+            } else if (item.getSlotNumber().equals(slotLocation)) {
+                System.out.println("Item is out of stock");
+            } else {
+                System.out.println("Were sorry! The item you entered does not exist");
+            }
         }
 
     }
+
+// add to cart, subtract from inventory count, subtract from balance
+}
 
