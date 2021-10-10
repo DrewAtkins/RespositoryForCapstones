@@ -30,6 +30,7 @@ public class VendingMachineCLI {
     private static final String FEED_MONEY_OPTION_2 = "Add 5 Dollars to your Balance.";
     private static final String FEED_MONEY_OPTION_3 = "Add 10 Dollars to your Balance.";
     private static final String FEED_MONEY_OPTION_4 = "Add 20 Dollars to your Balance.";
+    private static final String FEED_MONEY_OPTION_5 = "Return to previous Menu.";
     private static final String[] FEED_MONEY_MENU = {FEED_MONEY_OPTION_1, FEED_MONEY_OPTION_2, FEED_MONEY_OPTION_3, FEED_MONEY_OPTION_4};
 
 
@@ -60,8 +61,10 @@ public class VendingMachineCLI {
             vendingMachine.feedMoney(vendingMachine.FIVE);
         } else if (feedMoneyMenuChoice.equals(FEED_MONEY_OPTION_3)) {
             vendingMachine.feedMoney(vendingMachine.TEN);
-        } else {
+        } else if(feedMoneyMenuChoice.equals(FEED_MONEY_OPTION_4)) {
             vendingMachine.feedMoney(vendingMachine.TWENTY);
+        } else if (feedMoneyMenuChoice.equals(FEED_MONEY_OPTION_5)){
+
         }
     }
 

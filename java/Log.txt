@@ -1,5 +1,4 @@
 10/10/21 3:17 PM Change Returned: | $0.25 | $0.00
-
 10/10/21 3:29 PM Feed Money: | $5.00 | $5.00
 10/10/21 3:29 PM Feed Money: | $5.00 | $10.00
 10/10/21 3:36 PM Feed Money: | $5.00 | $5.00
@@ -7,3 +6,52 @@
 10/10/21 3:37 PM Feed Money: | $5.00 | $5.00
 10/10/21 3:37 PM Cowtales: | $3.50 | $2.00
 10/10/21 3:37 PM Change Returned: | $3.50 | $0.00
+10/10/21 4:20 PM Feed Money: | $5.00 | $5.00
+10/10/21 4:20 PM Potato Crisps: | $1.95 | -$1.10
+10/10/21 4:20 PM Feed Money: | $20.00 | $21.95
+10/10/21 4:20 PM Potato Crisps: | $18.90 | $15.85
+10/10/21 4:20 PM Potato Crisps: | $15.85 | $12.80
+10/10/21 4:21 PM Potato Crisps: | $12.80 | $9.75
+10/10/21 4:21 PM Potato Crisps: | $9.75 | $6.70
+10/10/21 4:21 PM Change Returned: | $9.75 | $0.00
+10/10/21 4:21 PM Feed Money: | $10.00 | $10.00
+10/10/21 4:22 PM Potato Crisps: | $6.95 | $3.90
+10/10/21 4:23 PM Potato Crisps: | $3.90 | $0.85
+10/10/21 4:25 PM Feed Money: | $5.00 | $5.00
+10/10/21 4:25 PM Potato Crisps: | $1.95 | -$1.10
+10/10/21 4:31 PM Feed Money: | $5.00 | $5.00
+10/10/21 4:31 PM Potato Crisps: | $1.95 | -$1.10
+10/10/21 4:31 PM Change Returned: | $1.95 | $0.00
+10/10/21 5:00 PM Feed Money: | $5.00 | $5.00
+10/10/21 5:06 PM Feed Money: | $10.00 | $10.00
+10/10/21 5:06 PM Feed Money: | $5.00 | $5.00
+10/10/21 5:08 PM Feed Money: | $10.00 | $10.00
+10/10/21 5:08 PM Feed Money: | $5.00 | $15.00
+10/10/21 5:08 PM Feed Money: | $5.00 | $5.00
+10/10/21 5:09 PM Feed Money: | $10.00 | $10.00
+10/10/21 5:09 PM Feed Money: | $5.00 | $15.00
+10/10/21 5:09 PM Feed Money: | $5.00 | $5.00
+10/10/21 5:36 PM Feed Money: | $20.00 | $20.00
+10/10/21 5:36 PM Potato Crisps: | $16.95 | $13.90
+10/10/21 5:36 PM Potato Crisps: | $13.90 | $10.85
+10/10/21 5:36 PM Potato Crisps: | $10.85 | $7.80
+10/10/21 5:36 PM Potato Crisps: | $7.80 | $4.75
+10/10/21 5:36 PM Potato Crisps: | $4.75 | $1.70
+10/10/21 5:36 PM Stackers: | $3.30 | $1.85
+10/10/21 5:36 PM Change Returned: | $3.30 | $0.00
+10/10/21 5:37 PM Little League Chew: | $2.35 | $1.40
+10/10/21 5:37 PM Change Returned: | $2.35 | $0.00
+10/10/21 5:38 PM Feed Money: | $1.00 | $3.35
+10/10/21 5:38 PM Change Returned: | $3.35 | $0.00
+10/10/21 5:38 PM U-Chews: | $2.50 | $1.65
+10/10/21 5:41 PM Feed Money: | $5.00 | $5.00
+10/10/21 5:41 PM Moonpie: | $3.20 | $1.40
+10/10/21 5:41 PM Change Returned: | $3.20 | $0.00
+10/10/21 5:41 PM Potato Crisps: | $0.15 | -$2.90
+10/10/21 5:42 PM Feed Money: | $5.00 | $5.00
+10/10/21 5:42 PM Potato Crisps: | $1.95 | -$1.10
+10/10/21 5:44 PM Feed Money: | $5.00 | $5.00
+10/10/21 5:44 PM Feed Money: | $1.00 | $6.00
+10/10/21 5:44 PM Change Returned: | $6.00 | $0.00
+10/10/21 5:45 PM Feed Money: | $5.00 | $5.00
+10/10/21 5:58 PM Feed Money: | $1.00 | $1.00

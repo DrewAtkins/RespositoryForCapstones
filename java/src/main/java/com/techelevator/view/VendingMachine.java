@@ -121,6 +121,7 @@ public class VendingMachine {
         System.out.println("Your change is " + quartersInPennies + " in quarters, " + dimesInPennies + " in dimes, and " + nickelsInPennies + " in nickels.");
 
         log("Change Returned", balance, BigDecimal.ZERO);
+        System.exit(0);
 
     }
 
@@ -158,12 +159,12 @@ public class VendingMachine {
         }
 
 
-        //if ((foundProduct.getInventoryCount() > 0) && (foundProduct.getCost().subtract(balance).compareTo(BigDecimal.ZERO) <= 0)){
+        if ((foundProduct.getInventoryCount() > 0) && (foundProduct.getCost().subtract(balance).compareTo(BigDecimal.ZERO) <= 0)){
 
-        if (foundProduct.getInventoryCount() > 0 && balance.compareTo(foundProduct.getCost()) >= 0) {
+        //if (foundProduct.getInventoryCount() > 0 && balance.compareTo(foundProduct.getCost()) >= 0) {
             subtractBalance(foundProduct.getCost());
             foundProduct.decrementInv();
-
+            System.out.println(foundProduct.getItemName() + "|" + foundProduct.getCost() + "|" + getBalance() + "|" + foundProduct.getResponse());
             log(foundProduct.getItemName(), balance, (balance.subtract(foundProduct.getCost())) );
 
         } else if ((foundProduct.getInventoryCount() > 0) && (foundProduct.getCost().subtract(balance).compareTo(BigDecimal.ZERO) > 0)) {
