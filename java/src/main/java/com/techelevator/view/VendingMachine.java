@@ -1,25 +1,25 @@
 package com.techelevator.view;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.*;
+import java.text.SimpleDateFormat;
+
 
 public class VendingMachine {
 
     private List<Product> vendingMachineItems = new ArrayList<Product>();
     BigDecimal balance = new BigDecimal(0);
-    BigDecimal balanceAfterChangeDispersed = new BigDecimal(0);
-    //coins
-    final BigDecimal NICKELS = new BigDecimal(5);
-    final BigDecimal DIMES = new BigDecimal(10);
-    final BigDecimal QUARTERS = new BigDecimal(25);
-    //coins_for_return_change_method
-    BigDecimal NICKELSX = new BigDecimal(0.00);
-    BigDecimal DIMESX = new BigDecimal(0.00);
-    BigDecimal QUARTERSX = new BigDecimal(0.00);
+    //BigDecimal balanceAfterChangeDispersed = new BigDecimal(0);
+
+//
+
 
     //bills
     public final BigDecimal DOLLAR = new BigDecimal(1.00);
@@ -84,12 +84,16 @@ public class VendingMachine {
     public void feedMoney(BigDecimal moneyAdded) {
         if (moneyAdded.equals(TWENTY)) {
             balance = balance.add(moneyAdded);
+            log("Feed Money", TWENTY, balance);
         } else if (moneyAdded.equals(TEN)) {
             balance = balance.add(moneyAdded);
+            log("Feed Money", TEN, balance);
         } else if (moneyAdded.equals(FIVE)) {
             balance = balance.add(moneyAdded);
+            log("Feed Money", FIVE, balance);
         } else if (moneyAdded.equals(DOLLAR)) {
             balance = balance.add(moneyAdded);
+            log("Feed Money", DOLLAR, balance);
         }
         System.out.println("Your balance is: " + balance.setScale(2));
 
@@ -101,7 +105,6 @@ public class VendingMachine {
     }
 
     public void returnChange(BigDecimal balance) {
-
 
         balanceInCoins = (balance.multiply(sadHundred)); //changing balance to pennies
         int totalPennies = balanceInCoins.intValue();
@@ -116,6 +119,8 @@ public class VendingMachine {
 
         //needs work - returns quarters
         System.out.println("Your change is " + quartersInPennies + " in quarters, " + dimesInPennies + " in dimes, and " + nickelsInPennies + " in nickels.");
+
+        log("Change Returned", balance, BigDecimal.ZERO);
 
     }
 
@@ -158,7 +163,9 @@ public class VendingMachine {
         if (foundProduct.getInventoryCount() > 0 && balance.compareTo(foundProduct.getCost()) >= 0) {
             subtractBalance(foundProduct.getCost());
             foundProduct.decrementInv();
-            System.out.println(foundProduct.getItemName() + "|" + foundProduct.getCost() + "|" + getBalance() + "|" + foundProduct.getResponse());
+
+            log(foundProduct.getItemName(), balance, (balance.subtract(foundProduct.getCost())) );
+
         } else if ((foundProduct.getInventoryCount() > 0) && (foundProduct.getCost().subtract(balance).compareTo(BigDecimal.ZERO) > 0)) {
             System.out.println("Insufficient funds, please insert more money.");
         } else {
@@ -166,6 +173,31 @@ public class VendingMachine {
         }
 
         return "Successful purchase";
+    }
+
+    public static void log(String typeOfInput, BigDecimal before, BigDecimal after) {
+
+        File Log = new File("Log.txt");
+        LocalDate today = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        try (PrintWriter logger = new PrintWriter(new FileOutputStream(Log,true))) {
+
+            NumberFormat formatter = NumberFormat.getCurrencyInstance();
+            String beforeFormatted = formatter.format(before);
+            String afterFormatted = formatter.format(after);
+
+            String formattedDate = today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
+            String formattedTime = time.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT));
+
+           logger.println(formattedDate + " " + formattedTime + " " + typeOfInput + ": | " + beforeFormatted + " | " + afterFormatted  );
+
+
+
+
+        } catch (FileNotFoundException e) {
+            System.out.println("this file does not exist");
+        }
+
     }
 
 }
