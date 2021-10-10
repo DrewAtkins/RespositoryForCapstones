@@ -74,6 +74,8 @@ public class VendingMachineCLI {
             } else if (purchaseMenuChoice.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
                 vendingMachine.purchaseProduct();
 
+            } else if (purchaseMenuChoice.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
+                vendingMachine.returnChange(vendingMachine.getBalance());
             }
         }
     }

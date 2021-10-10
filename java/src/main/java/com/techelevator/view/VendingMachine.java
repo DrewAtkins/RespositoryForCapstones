@@ -5,23 +5,29 @@ import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class VendingMachine {
 
     private List<Product> vendingMachineItems = new ArrayList<Product>();
     BigDecimal balance = new BigDecimal(0);
-    BigDecimal change = new BigDecimal(0);
+    BigDecimal balanceAfterChangeDispersed = new BigDecimal(0);
     //coins
-    final BigDecimal NICKELS = new BigDecimal(.05);
-    final BigDecimal DIMES = new BigDecimal(.10);
-    final BigDecimal QUARTERS = new BigDecimal(.25);
+    final BigDecimal NICKELS = new BigDecimal(5);
+    final BigDecimal DIMES = new BigDecimal(10);
+    final BigDecimal QUARTERS = new BigDecimal(25);
+    //coins_for_return_change_method
+    BigDecimal NICKELSX = new BigDecimal(0.00);
+    BigDecimal DIMESX = new BigDecimal(0.00);
+    BigDecimal QUARTERSX = new BigDecimal(0.00);
+
     //bills
     public final BigDecimal DOLLAR = new BigDecimal(1.00);
     public final BigDecimal FIVE = new BigDecimal(5.00);
     public final BigDecimal TEN = new BigDecimal(10.00);
     public final BigDecimal TWENTY = new BigDecimal(20.00);
+    public BigDecimal balanceInCoins = new BigDecimal(0);
+    public BigDecimal sadHundred = new BigDecimal(100.00);
 
     public VendingMachine() {
         loadingMachineItems();
@@ -86,7 +92,7 @@ public class VendingMachine {
             balance = balance.add(moneyAdded);
         }
         System.out.println("Your balance is: " + balance.setScale(2));
-        ;
+
     }
 
     public BigDecimal getBalance() {
@@ -94,23 +100,23 @@ public class VendingMachine {
         return balance;
     }
 
-    public BigDecimal returnChange() {
-        /*
-        x = changereturned * 100 - all pennies
-        balance / 25 == quatersX
-        balance -= (quartersX * 25);
+    public void returnChange(BigDecimal balance) {
 
 
-        balance / 10 == dimesX;
-        balance -= (dimesX * 10);
+        balanceInCoins = (balance.multiply(sadHundred)); //changing balance to pennies
+        int totalPennies = balanceInCoins.intValue();
+        int quartersInPennies = totalPennies / 25;
+        totalPennies -= quartersInPennies * 25;
 
-        balance / 5 == nicklesX;
+        int dimesInPennies = totalPennies / 10;
+        totalPennies -= dimesInPennies * 10;
 
-        print ("Your change is " + quartersX + " in quarters, " + dimesX + etc)
+        int nickelsInPennies = totalPennies / 5;
+        totalPennies -= nickelsInPennies * 5;
 
+        //needs work - returns quarters
+        System.out.println("Your change is " + quartersInPennies + " in quarters, " + dimesInPennies + " in dimes, and " + nickelsInPennies + " in nickels.");
 
-         */
-        return change;
     }
 
     public BigDecimal subtractBalance(BigDecimal itemCost) {
@@ -146,17 +152,15 @@ public class VendingMachine {
             return "Invalid Selection!";
         }
 
-//        if (foundProduct.getCost().compareTo(balance) < 0) {
-//
-//            return "Please insert more money";
-//        }
-// will come back to, make sure they cant take out more product than they can afford :(
 
-        if (foundProduct.getInventoryCount() > 0) {
+        //if ((foundProduct.getInventoryCount() > 0) && (foundProduct.getCost().subtract(balance).compareTo(BigDecimal.ZERO) <= 0)){
 
+        if (foundProduct.getInventoryCount() > 0 && balance.compareTo(foundProduct.getCost()) >= 0) {
             subtractBalance(foundProduct.getCost());
             foundProduct.decrementInv();
             System.out.println(foundProduct.getItemName() + "|" + foundProduct.getCost() + "|" + getBalance() + "|" + foundProduct.getResponse());
+        } else if ((foundProduct.getInventoryCount() > 0) && (foundProduct.getCost().subtract(balance).compareTo(BigDecimal.ZERO) > 0)) {
+            System.out.println("Insufficient funds, please insert more money.");
         } else {
             System.out.println("Item is out of stock");
         }
