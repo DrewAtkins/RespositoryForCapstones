@@ -63,8 +63,6 @@ public class VendingMachineCLI {
             vendingMachine.feedMoney(vendingMachine.TEN);
         } else if(feedMoneyMenuChoice.equals(FEED_MONEY_OPTION_4)) {
             vendingMachine.feedMoney(vendingMachine.TWENTY);
-        } else if (feedMoneyMenuChoice.equals(FEED_MONEY_OPTION_5)){
-
         }
     }
 

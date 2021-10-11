@@ -55,3 +55,13 @@
 10/10/21 5:44 PM Change Returned: | $6.00 | $0.00
 10/10/21 5:45 PM Feed Money: | $5.00 | $5.00
 10/10/21 5:58 PM Feed Money: | $1.00 | $1.00
+10/10/21 6:44 PM Feed Money: | $5.00 | $5.00
+10/10/21 6:44 PM Feed Money: | $5.00 | $5.00
+10/10/21 6:46 PM Feed Money: | $5.00 | $5.00
+10/10/21 6:46 PM Feed Money: | $5.00 | $10.00
+10/10/21 6:46 PM Change Returned: | $10.00 | $0.00
+10/10/21 6:47 PM Feed Money: | $10.00 | $10.00
+10/10/21 7:13 PM Feed Money: | $5.00 | $5.00
+10/10/21 7:13 PM Potato Crisps: | $1.95 | -$1.10
+10/10/21 7:13 PM Cola: | $0.70 | -$0.55
+10/10/21 7:14 PM Change Returned: | $0.70 | $0.00

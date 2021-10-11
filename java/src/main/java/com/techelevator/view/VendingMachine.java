@@ -118,7 +118,7 @@ public class VendingMachine {
         totalPennies -= nickelsInPennies * 5;
 
         //needs work - returns quarters
-        System.out.println("Your change is " + quartersInPennies + " in quarters, " + dimesInPennies + " in dimes, and " + nickelsInPennies + " in nickels.");
+        System.out.println("Your change is " + quartersInPennies + " quarters, " + dimesInPennies + " dimes, and " + nickelsInPennies + " nickels.");
 
         log("Change Returned", balance, BigDecimal.ZERO);
         System.exit(0);
